@@ -1,14 +1,28 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { colors } from '../styles';
+import { ContentWrapper } from './blocks';
 
 const Container = styled.div`
   width: 100%;
-  height: 80px;
-  background-color: ${colors.WHITE};
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  height: 150px;
+  display: flex;
+  align-items: center;
 `;
 
-const Header = () => <Container>Hej</Container>;
+const Logo = styled.div`
+  color: ${colors.BLACK};
+  font-size: 1.5rem;
+`;
+
+const Header = () => (
+  <Container>
+    <ContentWrapper>
+      <Logo>
+        <h1>Static Blog</h1>
+      </Logo>
+    </ContentWrapper>
+  </Container>
+);
 
 export default Header;
