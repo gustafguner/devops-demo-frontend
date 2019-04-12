@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { colors } from '../styles';
 import { ContentWrapper } from './blocks';
+import { Link } from 'gatsby';
 
 const Container = styled.div`
   width: 100%;
@@ -15,11 +16,18 @@ const Logo = styled.div`
   font-size: 1.5rem;
 `;
 
+const LogoLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
 const Header = () => (
   <Container>
     <ContentWrapper>
       <Logo>
-        <h1>Static Blog</h1>
+        <LogoLink to="/">
+          <h1>Static Blog</h1>
+        </LogoLink>
       </Logo>
     </ContentWrapper>
   </Container>
