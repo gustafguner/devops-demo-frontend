@@ -28,7 +28,7 @@ const BackendStatus = styled.div``;
 const Header = () => {
   const [backendVersion, setBackendVersion]: any = React.useState(null);
   React.useEffect(() => {
-    fetch('http://backend:3000/version', {
+    fetch('http://localhost:3000/version', {
       method: 'GET',
       headers: {
         'Content-Type': 'text/plain',
