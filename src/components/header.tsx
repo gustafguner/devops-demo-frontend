@@ -14,6 +14,8 @@ const Container = styled.div`
 const Logo = styled.div`
   color: ${colors.BLACK};
   font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const LogoLink = styled(Link)`
@@ -21,16 +23,41 @@ const LogoLink = styled(Link)`
   color: inherit;
 `;
 
-const Header = () => (
-  <Container>
-    <ContentWrapper>
-      <Logo>
-        <LogoLink to="/">
-          <h1>Static Blog</h1>
-        </LogoLink>
-      </Logo>
-    </ContentWrapper>
-  </Container>
-);
+const BackendStatus = styled.div``;
+
+const getData = async () => {
+  const data = await fetch('http://localhost:8000');
+  return data;
+};
+
+const Header = () => {
+  const [backendVersion, setBackendVersion]: any = React.useState(null);
+  React.useEffect(() => {
+    fetch('http://backend/version')
+      .then((result: any) => {
+        setBackendVersion(result.version);
+      })
+      .catch((error: any) => {
+        console.error('Error fetching backend version', error);
+      });
+  }, []);
+
+  return (
+    <Container>
+      <ContentWrapper>
+        <Logo>
+          <LogoLink to="/">
+            <h1>Static Blog</h1>
+          </LogoLink>
+          <BackendStatus>
+            {backendVersion !== null
+              ? backendVersion
+              : 'Unknown backend version'}
+          </BackendStatus>
+        </Logo>
+      </ContentWrapper>
+    </Container>
+  );
+};
 
 export default Header;
