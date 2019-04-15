@@ -25,15 +25,10 @@ const LogoLink = styled(Link)`
 
 const BackendStatus = styled.div``;
 
-const getData = async () => {
-  const data = await fetch('http://localhost:8000');
-  return data;
-};
-
 const Header = () => {
   const [backendVersion, setBackendVersion]: any = React.useState(null);
   React.useEffect(() => {
-    fetch('http://backend/version')
+    fetch('http://backend:3000/version')
       .then((result: any) => {
         setBackendVersion(result.version);
       })
