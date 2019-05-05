@@ -55,7 +55,7 @@ const Header = () => {
           <BackendStatus>
             {backendVersion !== null
               ? backendVersion
-              : 'Unknown backend version'}
+              : ''}
           </BackendStatus>
         </Logo>
       </ContentWrapper>
